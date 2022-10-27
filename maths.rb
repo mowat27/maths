@@ -1,16 +1,19 @@
 #!/usr/bin/env ruby
 
-op = ARGV.shift
+def maths(op, numbers)
+  case op
+  when '+'
+    numbers.reduce(0) { |result, n| result + n.to_i }
+  when '-'
+    numbers.reduce(0) { |result, n| result - n.to_i }
+  when '/'
+    numbers.reduce { |result, n| result.to_i / n.to_i unless n.to_i == 0 }
+  when 'x'
+    numbers.reduce(0) { |result, n| result * n.to_i }
+  end
+end
 
-puts case op
-when '+'
-  ARGV.reduce(0) { |result, n| result + n.to_i }
-when '-'
-  ARGV.reduce(0) { |result, n| result - n.to_i }
-when '/'
-  ARGV.reduce { |result, n| result.to_i / n.to_i unless n.to_i == 0 }
-when 'x'
-  ARGV.reduce(0) { |result, n| result * n.to_i }
-else
-  0
+if __FILE__ == $0
+  op = ARGV.shift
+  puts maths(op, ARGV) || 0
 end
