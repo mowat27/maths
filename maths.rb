@@ -16,4 +16,8 @@ elsif op == '/'
     result = result / n.to_i unless n.to_i == 0
   end
   puts result
+elsif op == 'x'
+  result = ARGV.shift.to_i
+  ARGV.each { |n| result *= n.to_i }
+  puts result
 end
