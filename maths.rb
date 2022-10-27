@@ -4,9 +4,7 @@ op = ARGV.shift
 
 case op
 when '+'
-  result = 0
-  ARGV.each { |n| result += n.to_i }
-  puts result
+  puts ARGV.reduce(0) { |result, n| result + n.to_i }
 when '-'
   result = 0
   ARGV.each { |n| result -= n.to_i }
